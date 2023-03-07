@@ -111,7 +111,7 @@ class Plugin_Admin
             '用户访问帮助',
             'manage_options',
             'user-access',
-            [$this, get_top_menu_html]
+            [$this, "get_top_menu_html"]
         );
     }
 
