@@ -153,6 +153,7 @@ class PluginUserAccess
         //$this->loader->add_action('template_redirect', $plugin_user_access_log, 'add');
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_user_access_log, 'load_access_log_js');
+        $this->loader->add_action('wp_ajax_send_access_log', $plugin_user_access_log, 'send_access_log');
         $this->loader->add_action('wp_ajax_nopriv_send_access_log', $plugin_user_access_log, 'send_access_log');
 
     }
