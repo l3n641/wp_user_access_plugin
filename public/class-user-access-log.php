@@ -3,7 +3,7 @@
 
 class User_Access_Log
 {
-
+    const VERSION = '1';
     protected $domain_api;
 
     public function __construct($domain_api)
@@ -19,12 +19,12 @@ class User_Access_Log
             "domain" => $_SERVER['HTTP_HOST'],
             "uri" => $_SERVER['REQUEST_URI'],
             "permalink" => $_SERVER['REQUEST_URI'],
-            "referer" => $_SERVER['HTTP_REFERER'],
+            "referer" => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "",
             "page_type" => $page_type,
 
         ];
 
-        wp_enqueue_script("access_log", plugin_dir_url(__FILE__) . 'js/log.js', array('jquery'), $this->version, true);
+        wp_enqueue_script("access_log", plugin_dir_url(__FILE__) . 'js/log.js', array('jquery'), self::VERSION, true);
         wp_localize_script('access_log', 'var_access_log', $data);
     }
 
